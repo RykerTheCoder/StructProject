@@ -10,3 +10,15 @@ C:\Users\4400117579\source\repos\StructProject\CKK.Logic\CKK.Logic\obj\Debug\net
 C:\Users\4400117579\source\repos\StructProject\CKK.Logic\CKK.Logic\obj\Debug\net6.0\refint\CKK.Logic.dll
 C:\Users\4400117579\source\repos\StructProject\CKK.Logic\CKK.Logic\obj\Debug\net6.0\CKK.Logic.pdb
 C:\Users\4400117579\source\repos\StructProject\CKK.Logic\CKK.Logic\obj\Debug\net6.0\ref\CKK.Logic.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\bin\Debug\net6.0\CKK.Logic.deps.json
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\bin\Debug\net6.0\CKK.Logic.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\bin\Debug\net6.0\CKK.Logic.pdb
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.csproj.AssemblyReference.cache
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.AssemblyInfoInputs.cache
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.AssemblyInfo.cs
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.csproj.CoreCompileInputs.cache
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\refint\CKK.Logic.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\CKK.Logic.pdb
+C:\Users\4400117579\source\repos\StructProject\CKK.Logic\obj\Debug\net6.0\ref\CKK.Logic.dll
