@@ -44,10 +44,10 @@ namespace CKK.Logic.Models
             else
             {
                 var item =
-                from element in _products
-                let product = element.GetProduct()
-                where product == prod
-                select element;
+                    from element in _products
+                    let product = element.GetProduct()
+                    where product == prod
+                    select element;
 
                 var result = item;
 
