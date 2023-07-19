@@ -1,28 +1,11 @@
-﻿
+﻿using CKK.Logic.Interfaces;
+
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store : Entity
     {
-        private int _id;
-        private string _name;
         private List<StoreItem> items = new List<StoreItem>();
 
-        public int GetId()
-        {
-            return _id;
-        }
-        public void SetId(int id)
-        {
-            _id = id;
-        }
-        public string GetName()
-        {
-            return _name;
-        }
-        public void SetName(string name)
-        {
-            _name = name;
-        }
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
             if (quantity > 0)
@@ -79,7 +62,7 @@ namespace CKK.Logic.Models
         {
             var storeItem =
                 from item in items
-                let prodId = item.GetProduct().GetId()
+                let prodId = item.GetProduct().Id
                 where prodId == id
                 select item;
             var result = storeItem;

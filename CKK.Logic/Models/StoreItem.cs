@@ -1,11 +1,9 @@
-﻿
+﻿using CKK.Logic.Interfaces;
+
 namespace CKK.Logic.Models
 {
-    public class StoreItem
+    public class StoreItem : InventoryItem
     {
-        private Product _product;
-        private int _quantity;
-
         public StoreItem(Product product, int quantity)
         {
             _product = product;

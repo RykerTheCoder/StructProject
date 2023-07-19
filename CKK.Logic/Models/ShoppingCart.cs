@@ -13,14 +13,14 @@ namespace CKK.Logic.Models
 
         public int GetCustomerId()
         {
-            return _customer.GetId();
+            return _customer.Id;
         }
 
         public ShoppingCartItem GetProductById(int id)
         {
             var prod =
                 from item in _products
-                let prodId = item.GetProduct().GetId()
+                let prodId = item.GetProduct().Id
                 where prodId == id
                 select item;
             var result = prod;
