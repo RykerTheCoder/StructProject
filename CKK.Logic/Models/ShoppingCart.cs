@@ -1,7 +1,9 @@
 ﻿
+using CKK.Logic.Interfaces;
+
 namespace CKK.Logic.Models
 {
-    public class ShoppingCart
+    public class ShoppingCart : IShoppingCart
     {
         public List<ShoppingCartItem> Products { get; set; } = new List<ShoppingCartItem>();
         public Customer Customer { get; set; }

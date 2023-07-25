@@ -2,7 +2,7 @@
 
 namespace CKK.Logic.Models
 {
-    public class Store : Entity
+    public class Store : Entity, IStore
     {
         private List<StoreItem> items = new List<StoreItem>();
 
