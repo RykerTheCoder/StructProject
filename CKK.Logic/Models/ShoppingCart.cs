@@ -1,5 +1,5 @@
-﻿
-using CKK.Logic.Interfaces;
+﻿using CKK.Logic.Interfaces;
+using CKK.Logic.Exceptions;
 
 namespace CKK.Logic.Models
 {
@@ -20,6 +20,11 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem GetProductById(int id)
         {
+            if (id < 0)
+            {
+                throw new InvalidIdException("Id is less than 0.");
+            }
+
             var prod =
                 from item in Products
                 let prodId = item.GetProduct().Id
@@ -39,9 +44,9 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
-            if (quantity < 0)
+            if (quantity <= 0)
             {
-                return null;
+                throw new InventoryItemStockTooLowException("Quantity added is less than or equal to 0.");
             }
             else
             {
@@ -70,19 +75,28 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem RemoveProduct(int id, int quantity)
         {
+            if (quantity < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(quantity), quantity, "Quantity removed is less than 0.");
+            }
 
             ShoppingCartItem prod = GetProductById(id);
 
-            prod.SetQuantity(prod.GetQuantity() - quantity);
+            if (prod == null)
+            {
+                throw new ProductDoesNotExistException("Product being removed does not exist.");
+            }
 
-            if (prod.GetQuantity() <= 0)
+            if (prod.GetQuantity() - quantity <= 0)
             {
                 prod.SetQuantity(0);
                 Products.Remove(prod);
-                return prod;
+            }
+            else
+            {
+                prod.SetQuantity(prod.GetQuantity() - quantity);
             }
             return prod;
-
 
         }
 
