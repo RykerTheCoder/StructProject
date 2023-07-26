@@ -1,7 +1,7 @@
 ﻿
 namespace CKK.Logic.Exceptions
 {
-    class InventoryItemStockTooLowException : Exception
+    public class InventoryItemStockTooLowException : Exception
     {
         public InventoryItemStockTooLowException() : base() { }
         public InventoryItemStockTooLowException(string message) : base(message) { }

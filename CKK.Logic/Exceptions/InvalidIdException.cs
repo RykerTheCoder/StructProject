@@ -1,7 +1,7 @@
 ﻿
 namespace CKK.Logic.Exceptions
 {
-    class InvalidIdException : Exception
+    public class InvalidIdException : Exception
     {
         public InvalidIdException() : base() { }
         public InvalidIdException(string message) : base(message) { }
