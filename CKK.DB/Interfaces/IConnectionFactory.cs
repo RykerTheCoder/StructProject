@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace CKK.DB.Interfaces
 {
-    public interface IConnectionFactory <IDbConnection>
+    public interface IConnectionFactory
     {
         IDbConnection GetConnection { get; }
     }
