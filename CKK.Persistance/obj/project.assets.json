@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
+      "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
       "projectName": "CKK.Persistance",
-      "projectPath": "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
+      "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
       "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-      "outputPath": "D:\\StructProject\\CKK.Persistance\\obj\\",
+      "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-              "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
             }
           }
         }

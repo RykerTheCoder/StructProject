@@ -28,40 +28,34 @@ namespace CKK.UI
     public partial class MainWindow : Window
     {
         private readonly UnitOfWork unitOfWork;
+        private readonly IProductRepository products;
+
         public MainWindow(IConnectionFactory connectionFactory)
         {
             unitOfWork = new UnitOfWork(connectionFactory);
+            products = unitOfWork.Products;
             InitializeComponent();
+            All_Items.ItemsSource = products.GetAll();
         }
-        private void RefreshList()
-        {
-            All_Items
-            foreach (StoreItem item in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
-            {
-                _Items.Add(item);
-            }
-        }
-
         private void OnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var shoppingCarts = unitOfWork.ShoppingCarts;
-
-                string newName = NewItemName.Text;
-                decimal newPrice = decimal.Parse(NewItemPrice.Text);
-                int newQuantity = int.Parse(NewItemStock.Text);
                 Product newProd = new Product();
+                if (NewItemName.Text == "")
+                {
+                    throw new ArgumentException();
+                }
+                newProd.Name = NewItemName.Text;
+                newProd.Price = decimal.Parse(NewItemPrice.Text);
+                newProd.Quantity = int.Parse(NewItemStock.Text);
 
-                newProd.Name = newName;
-                newProd.Price = newPrice;
-                shoppingCarts.AddToCart(newProd, newQuantity);
+                products.Add(newProd);
+                All_Items.Items.Add(products);
 
                 NewItemName.Text = "";
                 NewItemPrice.Text = "";
                 NewItemStock.Text = "";
-
-                RefreshList();
             }
             catch
             {
@@ -71,128 +65,129 @@ namespace CKK.UI
 
         private void OnSave_Click(object sender, RoutedEventArgs e)
         {
-            string newName = NewName.Text;
 
-            if (ID.Text != "")
+            try
             {
-                try
-                {
-                    int id = int.Parse(ID.Text);
-                    StoreItem storeItem = _Store.FindStoreItemById(id);
-                    if (storeItem == null)
-                    {
-                        throw new ArgumentException();
-                    }
+                int id = int.Parse(ID.Text);
+                Product product = products.GetById(id);
 
-                    if (AddAmount.Text != "")
-                    {
-                        try
-                        {
-                            int addAmount = int.Parse(AddAmount.Text);
-                            _Store.AddStoreItem(storeItem.Product, addAmount);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Invalid Add Amount");
-                        }
-                    }
-                    if (RemoveAmount.Text != "")
-                    {
-                        try
-                        {
-                            int removeAmount = int.Parse(RemoveAmount.Text);
-                            _Store.RemoveStoreItem(id, removeAmount);
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Invalid Remove Amount");
-                        }
-                    }
-                    if (NewPrice.Text != "")
-                    {
-                        try
-                        {
-                            decimal newPrice = decimal.Parse(NewPrice.Text);
-                            storeItem.Product.Price = newPrice;
-                        }
-                        catch
-                        {
-                            
-                            MessageBox.Show("Invalid Price");
-                        }
-                    }
-                    if (newName != "")
-                    {
-                        storeItem.Product.Name = newName;
-                    }
-                    NewName.Text = "";
-                    NewPrice.Text = "";
-                    AddAmount.Text = "";
-                    RemoveAmount.Text = "";
-
-                    RefreshList();
-                    
-                }
-                catch
+                if (product == null)
                 {
-                    MessageBox.Show("Invalid ID Input");
+                    throw new ArgumentException();
                 }
+
+                if (AddAmount.Text != "")
+                {
+                    try
+                    {
+                        product.Quantity += int.Parse(AddAmount.Text);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Invalid add amount");
+                    }
+                }
+                if (RemoveAmount.Text != "")
+                {
+                    try
+                    {
+                        product.Quantity -= int.Parse(RemoveAmount.Text);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Invalid remove amount");
+                    }
+                }
+                if (NewPrice.Text != "")
+                {
+                    try
+                    {
+                        product.Price = decimal.Parse(NewPrice.Text);
+                    }
+                    catch
+                    {
+
+                        MessageBox.Show("Invalid Price");
+                    }
+                }
+                if (NewName.Text != "")
+                {
+                    product.Name = NewName.Text;
+                }
+
+                products.Update(product);
+                All_Items.ItemsSource = products.GetAll();
+
+                NewName.Text = "";
+                NewPrice.Text = "";
+                AddAmount.Text = "";
+                RemoveAmount.Text = "";
+
+            }
+            catch
+            {
+                MessageBox.Show("Invalid ID input or ID was not found");
             }
         }
-
-        private void OnRemoveButton_Click(object sender, RoutedEventArgs e)
+        private void OnDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 int id = int.Parse(ID.Text);
-                _Store.DeleteStoreItem(id);
+                Product product = products.GetById(id);
 
-                ID.Text = "";
+                if (product == null)
+                {
+                    throw new ArgumentException();
+                }
 
-                RefreshList();
+                products.Delete(product);
+
+                All_Items.ItemsSource = products.GetAll();
             }
             catch
             {
-                MessageBox.Show("Item ID Doesn't Exist");
+                MessageBox.Show("Invalid ID input or ID was not found");
             }
         }
 
         private void OnSortQuantity_Click(object sender, RoutedEventArgs e)
         {
-            _Items.Clear();
-            foreach (StoreItem item in _Store.GetProductsByQuantity())
-            {
-                _Items.Add(item);
-            }
+            var sortedProducts = products.GetAll().OrderBy(x => x.Quantity);
+            All_Items.ItemsSource = sortedProducts;
         }
 
         private void OnSortPrice_Click(object sender, RoutedEventArgs e)
         {
-            _Items.Clear();
-            foreach (StoreItem item in _Store.GetProductsByPrice())
-            {
-                _Items.Add(item);
-            }
+            var sortedProducts = products.GetAll().OrderBy(x => x.Price);
+            All_Items.ItemsSource = sortedProducts;
         }
 
         private void OnSearch_Click(object sender, RoutedEventArgs e)
         {
-            SearchResults.Items.Clear();
-            if(IDSearchInput.Text != string.Empty)
+            List<Product> results = new List<Product>();
+
+            if (IDSearchInput.Text != string.Empty)
             {
-                SearchResults.Items.Add(_Store.FindStoreItemById(int.Parse(IDSearchInput.Text)));
-            }
-            else if(NameSearchInput.Text != string.Empty)
-            {
-                foreach(StoreItem item in _Store.GetAllProductsByName(NameSearchInput.Text))
+                try
                 {
-                    SearchResults.Items.Add(item);
+                    results.Add(products.GetById(int.Parse(IDSearchInput.Text)));
                 }
+                catch
+                {
+                    MessageBox.Show("Invalid ID input or ID wasn't found");
+                }
+            }
+            else if (NameSearchInput.Text != string.Empty)
+            {
+                results = products.GetByName(NameSearchInput.Text);
             }
             else
             {
                 MessageBox.Show("No input.");
             }
+
+            SearchResults.ItemsSource = results;
         }
 
         private void OnSearchSelection_Changed(object sender, SelectionChangedEventArgs e)
@@ -202,11 +197,11 @@ namespace CKK.UI
             NewName.Text = "";
             NewPrice.Text = "";
 
-            StoreItem selectedItem = (StoreItem)SearchResults.SelectedItem;
+            Product selectedItem = (Product)SearchResults.SelectedItem;
 
-            ID.Text = selectedItem.Product.Id.ToString();
-            NewName.Text = selectedItem.Product.Name.ToString();
-            NewPrice.Text= selectedItem.Product.Price.ToString();
+            ID.Text = selectedItem.Id.ToString();
+            NewName.Text = selectedItem.Name.ToString();
+            NewPrice.Text = selectedItem.Price.ToString();
 
         }
     }

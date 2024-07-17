@@ -127,12 +127,12 @@
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Save Changes" FontSize="18"/>
                     </Border>
                 </Button>
-                <Button BorderBrush="{x:Null}" Height="47" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Background="{x:Null}" Click="OnRemoveButton_Click">
+                <Button BorderBrush="{x:Null}" Height="47" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Background="{x:Null}" Click="OnDeleteButton_Click">
                     <Border BorderBrush="Black" Background="#FFFF3838" CornerRadius="11,11,11,11" BorderThickness="1,1,1,1" Width="170" Height="41">
                         <Border.Effect>
                             <DropShadowEffect Direction="270" ShadowDepth="4" BlurRadius="12"/>
                         </Border.Effect>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Remove Item" FontSize="18"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Delete Item" FontSize="18"/>
                     </Border>
                 </Button>
                 <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="0,1,0,1" Grid.RowSpan="2"/>

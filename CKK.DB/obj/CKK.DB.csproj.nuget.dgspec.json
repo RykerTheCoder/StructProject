@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\StructProject\\CKK.DB\\CKK.DB.csproj": {}
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {}
   },
   "projects": {
-    "D:\\StructProject\\CKK.DB\\CKK.DB.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.DB\\CKK.DB.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
         "projectName": "CKK.DB",
-        "projectPath": "D:\\StructProject\\CKK.DB\\CKK.DB.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.DB\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
         "projectName": "CKK.Logic",
-        "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.Logic\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\StructProject\\CKK.UI\\CKK.UI.csproj": {}
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj": {}
   },
   "projects": {
-    "D:\\StructProject\\CKK.DB\\CKK.DB.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.DB\\CKK.DB.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
         "projectName": "CKK.DB",
-        "projectPath": "D:\\StructProject\\CKK.DB\\CKK.DB.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.DB\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
               }
             }
           }
@@ -81,14 +81,14 @@
         }
       }
     },
-    "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
         "projectName": "CKK.Logic",
-        "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.Logic\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -136,14 +136,14 @@
         }
       }
     },
-    "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
         "projectName": "CKK.Persistance",
-        "projectPath": "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.Persistance\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -160,8 +160,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
               }
             }
           }
@@ -195,14 +195,14 @@
         }
       }
     },
-    "D:\\StructProject\\CKK.UI\\CKK.UI.csproj": {
+    "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\StructProject\\CKK.UI\\CKK.UI.csproj",
+        "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
         "projectName": "CKK.UI",
-        "projectPath": "D:\\StructProject\\CKK.UI\\CKK.UI.csproj",
+        "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
         "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-        "outputPath": "D:\\StructProject\\CKK.UI\\obj\\",
+        "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -219,14 +219,14 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\StructProject\\CKK.DB\\CKK.DB.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.DB\\CKK.DB.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj"
               },
-              "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
               },
-              "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
-                "projectPath": "D:\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj"
+              "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
+                "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj"
               }
             }
           }
