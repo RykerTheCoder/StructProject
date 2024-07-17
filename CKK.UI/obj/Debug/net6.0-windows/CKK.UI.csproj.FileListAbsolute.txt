@@ -27,3 +27,11 @@ C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\r
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.pdb
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.genruntimeconfig.cache
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\ref\CKK.UI.dll
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.csproj.AssemblyReference.cache
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\Login.g.cs
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI_MarkupCompile.cache
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI_MarkupCompile.lref
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.dll
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\refint\CKK.UI.dll
+D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.pdb

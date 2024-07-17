@@ -15,9 +15,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xaml;
+using CKK.DB.Interfaces;
+using CKK.DB.UOW;
 using CKK.Logic.Interfaces;
 using CKK.Logic.Models;
-using CKK.Persistance.Models;
 
 namespace CKK.UI
 {
@@ -26,19 +27,15 @@ namespace CKK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IStore _Store;
-        public ObservableCollection<StoreItem> _Items { get; private set; }
-        public MainWindow(IStore store)
+        private readonly UnitOfWork unitOfWork;
+        public MainWindow(IConnectionFactory connectionFactory)
         {
-            _Store = store;
+            unitOfWork = new UnitOfWork(connectionFactory);
             InitializeComponent();
-            _Items = new ObservableCollection<StoreItem>();
-            All_Items.ItemsSource = _Items;
-            RefreshList();
         }
         private void RefreshList()
         {
-            _Items.Clear();
+            All_Items
             foreach (StoreItem item in new ObservableCollection<StoreItem>(_Store.GetStoreItems()))
             {
                 _Items.Add(item);
@@ -49,6 +46,8 @@ namespace CKK.UI
         {
             try
             {
+                var shoppingCarts = unitOfWork.ShoppingCarts;
+
                 string newName = NewItemName.Text;
                 decimal newPrice = decimal.Parse(NewItemPrice.Text);
                 int newQuantity = int.Parse(NewItemStock.Text);
@@ -56,7 +55,7 @@ namespace CKK.UI
 
                 newProd.Name = newName;
                 newProd.Price = newPrice;
-                _Store.AddStoreItem(newProd, newQuantity);
+                shoppingCarts.AddToCart(newProd, newQuantity);
 
                 NewItemName.Text = "";
                 NewItemPrice.Text = "";

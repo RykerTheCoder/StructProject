@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CKK.Logic.Models;
-using CKK.Persistance.Models;
+using CKK.DB.UOW;
 
 namespace CKK.UI
 {
@@ -28,9 +28,8 @@ namespace CKK.UI
 
         private void OnLogClick(object sender, RoutedEventArgs e)
         {
-            Store store = (Store)Application.Current.FindResource("globStore");
-            FileStore fileStore = new FileStore();
-            MainWindow mainWindow = new MainWindow(fileStore);
+            DatabaseConnectionFactory connectionFactory = new DatabaseConnectionFactory();
+            MainWindow mainWindow = new MainWindow(connectionFactory);
             mainWindow.Show();
             Close();
 
