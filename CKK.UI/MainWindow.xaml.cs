@@ -29,6 +29,8 @@ namespace CKK.UI
     {
         private readonly UnitOfWork unitOfWork;
         private readonly IProductRepository products;
+        private int searchID = -1;
+        private string searchName = "";
 
         public MainWindow(IConnectionFactory connectionFactory)
         {
@@ -36,6 +38,28 @@ namespace CKK.UI
             products = unitOfWork.Products;
             InitializeComponent();
             All_Items.ItemsSource = products.GetAll();
+        }
+        private void Search()
+        {
+            List<Product> results = new List<Product>();
+
+            try
+            {
+                if(searchID == -1)
+                {
+                    results.AddRange(products.GetByName(searchName));
+                }
+                else
+                {
+                    results.Add(products.GetById(searchID));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            SearchResults.ItemsSource = results;
         }
         private void OnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -50,16 +74,24 @@ namespace CKK.UI
                 newProd.Price = decimal.Parse(NewItemPrice.Text);
                 newProd.Quantity = int.Parse(NewItemStock.Text);
 
+                // Add the product in the database
                 products.Add(newProd);
-                All_Items.Items.Add(products);
 
+                // Refresh all items list
+                All_Items.ItemsSource = products.GetAll();
+
+                // Refresh the search results if they are affected by the new addition
+                if (newProd.Name == searchName || newProd.Id == searchID)
+                {
+                    Search();
+                }
                 NewItemName.Text = "";
                 NewItemPrice.Text = "";
                 NewItemStock.Text = "";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error: Cannot Create Item. Maybe you used an invalid input?");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -82,9 +114,9 @@ namespace CKK.UI
                     {
                         product.Quantity += int.Parse(AddAmount.Text);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Invalid add amount");
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 if (RemoveAmount.Text != "")
@@ -93,9 +125,9 @@ namespace CKK.UI
                     {
                         product.Quantity -= int.Parse(RemoveAmount.Text);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Invalid remove amount");
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 if (NewPrice.Text != "")
@@ -104,19 +136,26 @@ namespace CKK.UI
                     {
                         product.Price = decimal.Parse(NewPrice.Text);
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
-                        MessageBox.Show("Invalid Price");
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 if (NewName.Text != "")
                 {
                     product.Name = NewName.Text;
                 }
-
+                // Change the product in the database
                 products.Update(product);
+
+                // Refresh all items list
                 All_Items.ItemsSource = products.GetAll();
+
+                // Refresh search results if affected
+                if(product.Name == searchName || id == searchID)
+                {
+                    Search();
+                }
 
                 NewName.Text = "";
                 NewPrice.Text = "";
@@ -124,9 +163,9 @@ namespace CKK.UI
                 RemoveAmount.Text = "";
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid ID input or ID was not found");
+                MessageBox.Show(ex.Message);
             }
         }
         private void OnDeleteButton_Click(object sender, RoutedEventArgs e)
@@ -138,16 +177,26 @@ namespace CKK.UI
 
                 if (product == null)
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Product was not found");
                 }
 
+                // Remove product from database
                 products.Delete(product);
 
+                // Refresh all items list
                 All_Items.ItemsSource = products.GetAll();
+
+                // Refresh search results if the deleted item was in the search results
+                if (product.Name == searchName || id == searchID)
+                {
+                    Search();
+                }
+
+                ID.Text = "";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid ID input or ID was not found");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -165,44 +214,46 @@ namespace CKK.UI
 
         private void OnSearch_Click(object sender, RoutedEventArgs e)
         {
-            List<Product> results = new List<Product>();
-
-            if (IDSearchInput.Text != string.Empty)
+            try
             {
-                try
+                if(IDSearchInput.Text == "")
                 {
-                    results.Add(products.GetById(int.Parse(IDSearchInput.Text)));
+                    searchID = -1;
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("Invalid ID input or ID wasn't found");
+                    searchID = int.Parse(IDSearchInput.Text);
                 }
             }
-            else if (NameSearchInput.Text != string.Empty)
+            catch
             {
-                results = products.GetByName(NameSearchInput.Text);
+                MessageBox.Show("Invalid Id");
             }
-            else
-            {
-                MessageBox.Show("No input.");
-            }
+            searchName = NameSearchInput.Text;
 
-            SearchResults.ItemsSource = results;
+            Search();
+
+            NameSearchInput.Text = "";
+            IDSearchInput.Text = "";
         }
 
-        private void OnSearchSelection_Changed(object sender, SelectionChangedEventArgs e)
+        private void OnSelection_Changed(object sender, SelectionChangedEventArgs e)
         {
+            Product selectedItem = (Product)((ListView)sender).SelectedItem;
+
             // clear all editing textboxes
             ID.Text = "";
             NewName.Text = "";
             NewPrice.Text = "";
 
-            Product selectedItem = (Product)SearchResults.SelectedItem;
-
-            ID.Text = selectedItem.Id.ToString();
-            NewName.Text = selectedItem.Name.ToString();
-            NewPrice.Text = selectedItem.Price.ToString();
-
+            // check if the selected item actually exists (it may have been deleted and threw this event)
+            if (selectedItem != null)
+            {
+                // set editing textboxes
+                ID.Text = selectedItem.Id.ToString();
+                NewName.Text = selectedItem.Name.ToString();
+                NewPrice.Text = selectedItem.Price.ToString();
+            }
         }
     }
 }

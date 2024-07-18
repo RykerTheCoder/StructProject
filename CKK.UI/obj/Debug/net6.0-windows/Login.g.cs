@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using CKK.Logic.Models;
 using CKK.UI;
 using System;
 using System.Diagnostics;

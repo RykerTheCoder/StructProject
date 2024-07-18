@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6vQ/iMImN1Eip1M7pHaLpqesb4dHRw3W+g96q0iiZqiZIp3LLK+e6+VhuemGwhqKdIHSB320/N7T/z4Y/WYsAg==",
+  "dgSpecHash": "qHu3QB7ADzxw8oaGAfCAAHFCTl6BzKgrOZiH/KS3qd1T4kLAgzetEsWGOseCz35lB2m04MPx7QKoqfzkub8oeA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
+  "projectFilePath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\4400117579\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\4400117579\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",

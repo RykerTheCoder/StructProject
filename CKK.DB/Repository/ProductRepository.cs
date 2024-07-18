@@ -74,7 +74,7 @@ namespace CKK.DB.Repository
 
         public int Update(Product entity)
         {
-            string sql = "UPDATE Products SET Id = @Id, Price = @Price, Quantity = @Quantity, Name = @Name WHERE Id = @Id";
+            string sql = "UPDATE Products SET Price = @Price, Quantity = @Quantity, Name = @Name WHERE Id = @Id";
             using (IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();

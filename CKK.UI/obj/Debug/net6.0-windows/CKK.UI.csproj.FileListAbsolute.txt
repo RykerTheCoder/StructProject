@@ -13,7 +13,6 @@ C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\M
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\App.g.cs
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI_MarkupCompile.cache
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI_MarkupCompile.lref
-C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\App.baml
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\Login.baml
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\MainWindow.baml
 C:\Users\4400117579\source\repos\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.g.resources
@@ -35,3 +34,17 @@ D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI_MarkupCompile.lref
 D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.dll
 D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\refint\CKK.UI.dll
 D:\StructProject\CKK.UI\obj\Debug\net6.0-windows\CKK.UI.pdb
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\Dapper.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\CKK.DB.dll
+C:\Users\4400117579\source\repos\StructProject\CKK.UI\bin\Debug\net6.0-windows\CKK.DB.pdb

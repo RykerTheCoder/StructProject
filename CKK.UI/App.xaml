@@ -4,7 +4,4 @@
              xmlns:Local="clr-namespace:CKK.UI"
              xmlns:Logic="clr-namespace:CKK.Logic.Models;assembly=CKK.Logic"
              StartupUri="Login.xaml">
-    <Application.Resources>
-        <Logic:Store x:Key="globStore"></Logic:Store>
-    </Application.Resources>
 </Application>
