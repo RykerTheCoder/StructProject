@@ -856,11 +856,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
+      "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
       "projectName": "CKK.UI",
-      "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
+      "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
       "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.UI\\obj\\",
+      "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -877,14 +877,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {
-              "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.DB\\CKK.DB.csproj"
+            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj": {
+              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj"
             },
-            "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-              "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
             },
-            "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
-              "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj"
+            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
+              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj"
             }
           }
         }

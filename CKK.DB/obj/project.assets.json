@@ -818,9 +818,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
+      "projectUniqueName": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
       "projectName": "CKK.DB",
-      "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
+      "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\CKK.DB.csproj",
       "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.DB\\obj\\",
       "projectStyle": "PackageReference",
@@ -839,8 +839,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
-              "projectPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
+            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
+              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
             }
           }
         }

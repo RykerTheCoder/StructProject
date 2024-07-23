@@ -20,7 +20,7 @@ namespace CKK.DB.Repository
         }
         public int Add(ShoppingCartItem entity)
         {
-            string sql = "INSERT INTO ShoppingCartItems (ShoppingCartId,ProductId,Quantity) VALUES (ShoppingCartId = @ShoppingCartId, ProductId = @ProductId, Quantity = @Quantity)";
+            string sql = "INSERT INTO ShoppingCartItems (ShoppingCartId,ProductId,Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
             using(IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
