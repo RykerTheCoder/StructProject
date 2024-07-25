@@ -85,7 +85,7 @@ namespace CKK.DB.Repository
 
         public decimal GetTotal(int shoppingCartId)
         {
-            string sql = "SELECT SUM(Quantity) FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
+            string sql = "SELECT SUM(items.Quantity * Price) FROM ShoppingCartItems items, Products prods WHERE items.ProductId = prods.Id AND ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
@@ -105,7 +105,7 @@ namespace CKK.DB.Repository
 
         public int Update(ShoppingCartItem entity)
         {
-            string sql = "UPDATE ShoppingCartItems SET Id = @Id, ShoppingCartId = @ShoppingCartId, ProductId = @ProductId, Quantity = @Quantity WHERE Id = @Id";
+            string sql = "UPDATE ShoppingCartItems SET ShoppingCartId = @ShoppingCartId, ProductId = @ProductId, Quantity = @Quantity WHERE ProductId = @ProductId AND ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
