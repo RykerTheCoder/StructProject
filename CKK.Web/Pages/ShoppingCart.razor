@@ -28,7 +28,7 @@ else
                         <br />
                     </div>
                     <div class="card-footer">
-                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="@uow.ShoppingCarts.GetProducts(order.ShoppingCartId).Where(e => e.ProductId == item.Id).First()?.Quantity ?? 0" min="0" max="@item.Quantity" step="1"/>
+                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="0" min="0" max="@item.Quantity" step="1"/>
                     </div>
                 </div>
             }
@@ -43,8 +43,9 @@ else
     [Inject]
     private IUnitOfWork uow { get; set; } = null!;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+
         if(uow != null) //Valid uow
         {
             order = uow.Orders.GetById(1);
@@ -54,13 +55,10 @@ else
 
                 order = newOrder;
                 uow.Orders.Add(newOrder);
-            }
-            if(uow.ShoppingCarts.GetProducts(100).Any())
-            {
-                UpdateTotal();
-            }
+            } 
         }
     }
+    
 
     protected void spinnerChange(int productId, object value)
     {

@@ -86,12 +86,21 @@ namespace CKK.DB.Repository
         public decimal GetTotal(int shoppingCartId)
         {
             string sql = "SELECT SUM(items.Quantity * Price) FROM ShoppingCartItems items, Products prods WHERE items.ProductId = prods.Id AND ShoppingCartId = @ShoppingCartId";
+            decimal result;
             using (IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
-                var result = connection.QuerySingleOrDefault<decimal>(sql, new { ShoppingCartId = shoppingCartId });
-                return result;
+                try
+                {
+                    result = connection.QuerySingleOrDefault<decimal>(sql, new { ShoppingCartId = shoppingCartId });
+                }
+                catch
+                {
+                    result = 0;
+                }
+            
             }
+            return result;
         }
         public void Ordered(int shoppingCartId)
         {
