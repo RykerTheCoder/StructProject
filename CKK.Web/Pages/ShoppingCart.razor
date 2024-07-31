@@ -18,7 +18,7 @@ else
         <input type="hidden" value="@order.OrderId"/>
         <p>The number selectors will add your items to the shopping cart.</p>
         <div class="row">
-            @foreach (var item in uow.Products.GetAll())
+            @foreach (var item in storeItems)
             {
                 <div class="card" style="width: 18rem; padding: 5px">
                     <div class="card-body">
@@ -28,7 +28,7 @@ else
                         <br />
                     </div>
                     <div class="card-footer">
-                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="0" min="0" max="@item.Quantity" step="1"/>
+                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="@Task.Run(() => shoppingCart.Count != 0 ? shoppingCart.Where(i => item.Id == i.ProductId).First().Quantity.ToString() : "0")" min="0" max="@item.Quantity" step="1"/>
                     </div>
                 </div>
             }
@@ -42,6 +42,8 @@ else
     string checkoutTotal = "Check Out - .00";
     [Inject]
     private IUnitOfWork uow { get; set; } = null!;
+    private List<ShoppingCartItem> shoppingCart;
+    private List<Product> storeItems;
 
     protected override async Task OnInitializedAsync()
     {
@@ -55,7 +57,9 @@ else
 
                 order = newOrder;
                 uow.Orders.Add(newOrder);
-            } 
+            }
+            shoppingCart = uow.ShoppingCarts.GetProducts(100);
+            storeItems = uow.Products.GetAll();
         }
     }
     
