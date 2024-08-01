@@ -295,19 +295,6 @@
         "runtime": {
           "bin/placeholder/CKK.Logic.dll": {}
         }
-      },
-      "CKK.Persistance/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CKK.Logic": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/CKK.Persistance.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CKK.Persistance.dll": {}
-        }
       }
     }
   },
@@ -836,18 +823,12 @@
       "type": "project",
       "path": "../CKK.Logic/CKK.Logic.csproj",
       "msbuildProject": "../CKK.Logic/CKK.Logic.csproj"
-    },
-    "CKK.Persistance/1.0.0": {
-      "type": "project",
-      "path": "../CKK.Persistance/CKK.Persistance.csproj",
-      "msbuildProject": "../CKK.Persistance/CKK.Persistance.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "CKK.DB >= 1.0.0",
-      "CKK.Logic >= 1.0.0",
-      "CKK.Persistance >= 1.0.0"
+      "CKK.Logic >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -860,7 +841,7 @@
       "projectName": "CKK.UI",
       "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\CKK.UI.csproj",
       "packagesPath": "C:\\Users\\4400117579\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\4400117579\\source\\repos\\StructProject\\CKK.UI\\obj\\",
+      "outputPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\4400117579\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -882,9 +863,6 @@
             },
             "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj": {
               "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Logic\\CKK.Logic.csproj"
-            },
-            "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj": {
-              "projectPath": "C:\\Users\\4400117579\\Source\\Repos\\StructProject\\CKK.Persistance\\CKK.Persistance.csproj"
             }
           }
         }

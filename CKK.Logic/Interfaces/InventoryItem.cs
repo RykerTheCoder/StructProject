@@ -3,7 +3,6 @@ using CKK.Logic.Models;
 
 namespace CKK.Logic.Interfaces
 {
-    [Serializable]
     public abstract class InventoryItem
     {
         private int _quantity;

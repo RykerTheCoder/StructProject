@@ -10,14 +10,16 @@ using Dapper;
 
 namespace CKK.DB.Repository
 {
+    // class that acts as an access point to the Products table
     public class ProductRepository : IProductRepository
     {
+        // get the connection to the database
         private readonly IConnectionFactory _connectionFactory;
         public ProductRepository(IConnectionFactory conn)
         {
             _connectionFactory = conn;
         }
-        public int Add(Product entity)
+        public int Add(Product entity) // method for adding a product to the table
         {
             string sql = "INSERT INTO Products (Price,Quantity,Name) VALUES (@Price,@Quantity,@Name)";
             using (IDbConnection connection  = _connectionFactory.GetConnection)
@@ -28,7 +30,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public int Delete(Product entity)
+        public int Delete(Product entity) // method for deleting a product from the table
         {
             string sql = "DELETE FROM Products WHERE Id = @Id";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -39,7 +41,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public List<Product> GetAll()
+        public List<Product> GetAll() // method for retrieving all products from the table
         {
             string sql = "SELECT * FROM Products";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -50,7 +52,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public Product GetById(int id)
+        public Product GetById(int id) // method for retrieving all products that have the given Id
         {
             string sql = "SELECT * FROM Products WHERE Id = @Id";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -61,9 +63,9 @@ namespace CKK.DB.Repository
             }
         }
 
-        public List<Product> GetByName(string name)
+        public List<Product> GetByName(string name) // method for retrieving all products that have the specified string inside of the name
         {
-            string sql = "SELECT * FROM Products WHERE Name = @Name";
+            string sql = "SELECT * FROM Products WHERE Name LIKE CONCAT('%', @Name, '%')";
             using (IDbConnection connection = _connectionFactory.GetConnection)
             {
                 connection.Open();
@@ -72,7 +74,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public int Update(Product entity)
+        public int Update(Product entity) // method for updating a product in the database
         {
             string sql = "UPDATE Products SET Price = @Price, Quantity = @Quantity, Name = @Name WHERE Id = @Id";
             using (IDbConnection connection = _connectionFactory.GetConnection)

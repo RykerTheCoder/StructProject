@@ -1,8 +1,7 @@
-﻿using CKK.Logic.Interfaces;
-
+﻿
 namespace CKK.Logic.Models
 {
-    [Serializable]
+    // Class that represents a product in the store
     public class Product
     {
         public int Id { get; set; }

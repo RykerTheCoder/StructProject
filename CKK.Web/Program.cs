@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using CKK.DB.Interfaces;
 using CKK.DB.UOW;
 

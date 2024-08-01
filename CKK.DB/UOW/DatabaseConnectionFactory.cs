@@ -10,6 +10,7 @@ using System.Configuration;
 
 namespace CKK.DB.UOW
 {
+    // provides a connection to the database
     public class DatabaseConnectionFactory : IConnectionFactory
     {
         public static string CnnVal(string name)

@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using CKK.Logic.Models;
+﻿using System.Windows;
 using CKK.DB.UOW;
 
 namespace CKK.UI
@@ -19,6 +6,7 @@ namespace CKK.UI
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
+    // This Page doesn't have any verification currently, so it just directs you to MainWindow when you press the button
     public partial class Login : Window
     {
         public Login()

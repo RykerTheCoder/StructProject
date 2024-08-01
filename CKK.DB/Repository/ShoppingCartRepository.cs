@@ -11,14 +11,16 @@ using Dapper;
 
 namespace CKK.DB.Repository
 {
+    // class that acts as an access point to the ShoppingCartItems table
     public class ShoppingCartRepository : IShoppingCartRepository
     {
+        // get the connection to the database
         private readonly IConnectionFactory _connectionFactory;
         public ShoppingCartRepository(IConnectionFactory conn)
         {
             _connectionFactory = conn;
         }
-        public int Add(ShoppingCartItem entity)
+        public int Add(ShoppingCartItem entity) // Add a new item to the ShoppingCartItems table
         {
             string sql = "INSERT INTO ShoppingCartItems (ShoppingCartId,ProductId,Quantity) VALUES (@ShoppingCartId, @ProductId, @Quantity)";
             using(IDbConnection connection = _connectionFactory.GetConnection)
@@ -29,7 +31,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity)
+        public ShoppingCartItem AddToCart(int ShoppingCartId, int ProductId, int quantity) // same thing as the Add method except it has validation and different inputs
         {
             using(IDbConnection connection = _connectionFactory.GetConnection)
             {
@@ -61,7 +63,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public int ClearCart(int shoppingCartId)
+        public int ClearCart(int shoppingCartId) // Removes the item from the table
         {
             string sql = "DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -72,7 +74,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public List<ShoppingCartItem> GetProducts(int shoppingCartId)
+        public List<ShoppingCartItem> GetProducts(int shoppingCartId) // get all items with the provided shoppingCartId
         {
             string sql = "SELECT * FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -83,7 +85,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public decimal GetTotal(int shoppingCartId)
+        public decimal GetTotal(int shoppingCartId) // Gets the total price of all items (the order) with the provided shopping cart id
         {
             string sql = "SELECT SUM(items.Quantity * Price) FROM ShoppingCartItems items, Products prods WHERE items.ProductId = prods.Id AND ShoppingCartId = @ShoppingCartId";
             decimal result;
@@ -102,7 +104,7 @@ namespace CKK.DB.Repository
             }
             return result;
         }
-        public void Ordered(int shoppingCartId)
+        public void Ordered(int shoppingCartId) // exact same thing as ClearCart except it doesnt return anything
         {
             string sql = "DELETE FROM ShoppingCartItems WHERE ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)
@@ -112,7 +114,7 @@ namespace CKK.DB.Repository
             }
         }
 
-        public int Update(ShoppingCartItem entity)
+        public int Update(ShoppingCartItem entity) // Method for updating a row in the table
         {
             string sql = "UPDATE ShoppingCartItems SET ShoppingCartId = @ShoppingCartId, ProductId = @ProductId, Quantity = @Quantity WHERE ProductId = @ProductId AND ShoppingCartId = @ShoppingCartId";
             using (IDbConnection connection = _connectionFactory.GetConnection)

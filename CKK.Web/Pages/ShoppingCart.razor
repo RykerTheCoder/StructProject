@@ -28,7 +28,7 @@ else
                         <br />
                     </div>
                     <div class="card-footer">
-                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="@Task.Run(() => shoppingCart.Count != 0 ? shoppingCart.Where(i => item.Id == i.ProductId).First().Quantity.ToString() : "0")" min="0" max="@item.Quantity" step="1"/>
+                        <input class="num-spinner" id="spinner-@item.Id" @onchange="@(e => spinnerChange(item.Id, e.Value))" style="padding: 10px; width: 75%;" type="number" value="@(shoppingCart.Count != 0 ? shoppingCart.Where(i => item.Id == i.ProductId).First().Quantity : 0)" min="0" max="@item.Quantity" step="1"/> 
                     </div>
                 </div>
             }
@@ -42,10 +42,12 @@ else
     string checkoutTotal = "Check Out - .00";
     [Inject]
     private IUnitOfWork uow { get; set; } = null!;
+
+    // these 2 variables are neccessary so that the gui doesnt access the database which would cause the gui to complete rendering before the results from the database returned
     private List<ShoppingCartItem> shoppingCart;
     private List<Product> storeItems;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
 
         if(uow != null) //Valid uow
@@ -58,8 +60,12 @@ else
                 order = newOrder;
                 uow.Orders.Add(newOrder);
             }
-            shoppingCart = uow.ShoppingCarts.GetProducts(100);
+            //initialize lists
+            shoppingCart = uow.ShoppingCarts.GetProducts(order.ShoppingCartId);
             storeItems = uow.Products.GetAll();
+
+            // update checkout button
+            UpdateTotal();
         }
     }
     
@@ -72,6 +78,7 @@ else
     }
     private void UpdateTotal()
     {
+        // Get the total cost of everything that is ordered
         var total = uow.ShoppingCarts.GetTotal(order.ShoppingCartId).ToString("c");
         checkoutTotal = "Check Out - " + total;
     }
@@ -89,11 +96,11 @@ else
             uow.Products.Update(prod);
         }
 
-        //For the assignment we just delete or clear
+        //For this program we just delete or clear
         uow.Orders.Delete(order);
         uow.ShoppingCarts.ClearCart(order.ShoppingCartId);
-
-        UpdateTotal();
+        
+        // navigate to the checkout page
         NavManager.NavigateTo("/Checkout");
     }
 }

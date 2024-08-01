@@ -8,6 +8,7 @@ using CKK.DB.Repository;
 
 namespace CKK.DB.UOW
 {
+    //class that gives access to the individual database repositories
     public class UnitOfWork : IUnitOfWork
     {
         public UnitOfWork(IConnectionFactory conn)

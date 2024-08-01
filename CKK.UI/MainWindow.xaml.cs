@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.DirectoryServices;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xaml;
 using CKK.DB.Interfaces;
 using CKK.DB.UOW;
-using CKK.Logic.Interfaces;
+using CKK.Logic.Exceptions;
 using CKK.Logic.Models;
 
 namespace CKK.UI
@@ -27,25 +15,30 @@ namespace CKK.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly UnitOfWork unitOfWork;
-        private readonly IProductRepository products;
+        private readonly UnitOfWork unitOfWork; // variable to provide access to the repositories connected to the database
+
+        private readonly IProductRepository products; // this variable is just here so that I dont have to write unitOfWork.Products a ton
         private int searchID = -1;
         private string searchName = "";
 
         public MainWindow(IConnectionFactory connectionFactory)
         {
+            //initialize instance variables
             unitOfWork = new UnitOfWork(connectionFactory);
             products = unitOfWork.Products;
             InitializeComponent();
+
+            // Display the products on the "All Items" list
             All_Items.ItemsSource = products.GetAll();
         }
+        // Searches the database using unitOfWork
         private void Search()
         {
             List<Product> results = new List<Product>();
 
             try
             {
-                if(searchID == -1)
+                if (searchID == -1) // if nothing was entered into the id box then search for the name
                 {
                     results.AddRange(products.GetByName(searchName));
                 }
@@ -59,16 +52,18 @@ namespace CKK.UI
                 MessageBox.Show(ex.Message);
             }
 
+            // Display the resulting data
             SearchResults.ItemsSource = results;
         }
+        // When the "Add Item" button is clicked
         private void OnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Product newProd = new Product();
-                if (NewItemName.Text == "")
+                if (NewItemName.Text == "") // check for if the name was entered
                 {
-                    throw new ArgumentException();
+                    throw new ArgumentException("Name was not entered");
                 }
                 newProd.Name = NewItemName.Text;
                 newProd.Price = decimal.Parse(NewItemPrice.Text);
@@ -85,6 +80,8 @@ namespace CKK.UI
                 {
                     Search();
                 }
+
+                // reset textboxes
                 NewItemName.Text = "";
                 NewItemPrice.Text = "";
                 NewItemStock.Text = "";
@@ -94,40 +91,53 @@ namespace CKK.UI
                 MessageBox.Show(ex.Message);
             }
         }
-
+        // Event for when "Save Changes" button is clicked
         private void OnSave_Click(object sender, RoutedEventArgs e)
         {
 
             try
             {
                 int id = int.Parse(ID.Text);
-                Product product = products.GetById(id);
+                Product product = products.GetById(id); // retrieve the product from the database
 
-                if (product == null)
+                if (product == null) // checks if the product was found or not
                 {
-                    throw new ArgumentException();
+                    throw new ProductDoesNotExistException("Product could not be found");
                 }
 
+                // Change the product accordingly
                 if (AddAmount.Text != "")
                 {
                     try
                     {
                         product.Quantity += int.Parse(AddAmount.Text);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        throw new ArgumentException("Add amount is invalid");
                     }
                 }
                 if (RemoveAmount.Text != "")
                 {
+                    int removeAmount;
+
                     try
                     {
-                        product.Quantity -= int.Parse(RemoveAmount.Text);
+                        removeAmount = int.Parse(RemoveAmount.Text);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        throw new ArgumentException("Remove amount is invalid");
+                    }
+                    
+
+                    if (product.Quantity >= removeAmount) // prevent quantity from going negative
+                    {
+                        product.Quantity -= removeAmount;
+                    }
+                    else
+                    {
+                        throw new InventoryItemStockTooLowException("Cannot remove an amount greater than the stock");
                     }
                 }
                 if (NewPrice.Text != "")
@@ -136,15 +146,20 @@ namespace CKK.UI
                     {
                         product.Price = decimal.Parse(NewPrice.Text);
                     }
-                    catch (Exception ex)
+                    catch
                     {
-                        MessageBox.Show(ex.Message);
+                        throw new ArgumentException("New price is invalid");
                     }
                 }
                 if (NewName.Text != "")
                 {
                     product.Name = NewName.Text;
                 }
+                else
+                {
+                    throw new ArgumentException("New name is invalid");
+                }
+
                 // Change the product in the database
                 products.Update(product);
 
@@ -152,11 +167,12 @@ namespace CKK.UI
                 All_Items.ItemsSource = products.GetAll();
 
                 // Refresh search results if affected
-                if(product.Name == searchName || id == searchID)
+                if (product.Name == searchName || id == searchID)
                 {
                     Search();
                 }
 
+                // reset textboxes
                 NewName.Text = "";
                 NewPrice.Text = "";
                 AddAmount.Text = "";
@@ -168,6 +184,7 @@ namespace CKK.UI
                 MessageBox.Show(ex.Message);
             }
         }
+        // Event for when the "Delete Item" button is clicked
         private void OnDeleteButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -175,9 +192,9 @@ namespace CKK.UI
                 int id = int.Parse(ID.Text);
                 Product product = products.GetById(id);
 
-                if (product == null)
+                if (product == null) //check if the product was found
                 {
-                    throw new ArgumentException("Product was not found");
+                    throw new ProductDoesNotExistException("Product could not be found");
                 }
 
                 // Remove product from database
@@ -192,6 +209,7 @@ namespace CKK.UI
                     Search();
                 }
 
+                //reset id textbox
                 ID.Text = "";
             }
             catch (Exception ex)
@@ -199,7 +217,7 @@ namespace CKK.UI
                 MessageBox.Show(ex.Message);
             }
         }
-
+        // events for when you click the column headers for the "All Items" list
         private void OnSortQuantity_Click(object sender, RoutedEventArgs e)
         {
             var sortedProducts = products.GetAll().OrderBy(x => x.Quantity);
@@ -211,12 +229,23 @@ namespace CKK.UI
             var sortedProducts = products.GetAll().OrderBy(x => x.Price);
             All_Items.ItemsSource = sortedProducts;
         }
+        private void OnSortID_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedProducts = products.GetAll().OrderBy(x => x.Id);
+            All_Items.ItemsSource = sortedProducts;
+        }
 
+        private void OnSortName_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedProducts = products.GetAll().OrderBy(x => x.Name);
+            All_Items.ItemsSource = sortedProducts;
+        }
+        // Event for when the "Search" button is clicked
         private void OnSearch_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if(IDSearchInput.Text == "")
+                if (IDSearchInput.Text == "") // if id was not entered
                 {
                     searchID = -1;
                 }
@@ -229,10 +258,13 @@ namespace CKK.UI
             {
                 MessageBox.Show("Invalid Id");
             }
-            searchName = NameSearchInput.Text;
 
+            searchName = NameSearchInput.Text; // search name will not get searched if id was found so it is safe to set it by default
+
+            // Search the database and display the products accordingly
             Search();
 
+            //reset textboxes (not sure if it is more intuitive to do this or not)
             NameSearchInput.Text = "";
             IDSearchInput.Text = "";
         }

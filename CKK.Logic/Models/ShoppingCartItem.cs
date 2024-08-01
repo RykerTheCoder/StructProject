@@ -2,7 +2,7 @@
 using CKK.Logic.Exceptions;
 namespace CKK.Logic.Models
 {
-    [Serializable]
+    // class that represents an item that the customer has in the shopping cart
     public class ShoppingCartItem : InventoryItem
     {
         public Product Product { get; set; }
@@ -18,7 +18,7 @@ namespace CKK.Logic.Models
             }
             set
             {
-                if(value >= 0)
+                if(value >= 0) //make sure the quantity doesnt become negative
                 {
                     _quantity = value;
                 }

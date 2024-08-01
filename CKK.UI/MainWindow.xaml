@@ -71,7 +71,7 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Id}">
-                                <GridViewColumnHeader Content="ID"/>
+                                <GridViewColumnHeader Content="ID" Click="OnSortID_Click"/>
                             </GridViewColumn>
                             <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Price}">
                                 <GridViewColumnHeader Content="Price" Click="OnSortPrice_Click"/>
@@ -80,7 +80,7 @@
                                 <GridViewColumnHeader Content="Quantity" Click="OnSortQuantity_Click"/>
                             </GridViewColumn>
                             <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Path=Name}">
-                                <GridViewColumnHeader Content="Name"/>
+                                <GridViewColumnHeader Content="Name" Click="OnSortName_Click"/>
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>
