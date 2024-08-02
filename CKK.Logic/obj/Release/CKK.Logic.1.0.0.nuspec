@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CKK.Logic</id>
+    <version>1.0.0</version>
+    <authors>CKK.Logic</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\bin\Release\net6.0\CKK.Logic.dll" target="lib\net6.0\CKK.Logic.dll" />
+  </files>
+</package>

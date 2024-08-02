@@ -333,10 +333,6 @@ namespace CKK.UI
 
                 // Search the database and display the products accordingly
                 Search();
-
-                //reset textboxes (not sure if it is more intuitive to do this or not)
-                NameSearchInput.Text = "";
-                IDSearchInput.Text = "";
             }
             catch (Exception ex)
             {

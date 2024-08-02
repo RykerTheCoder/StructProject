@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>CKK.DB</id>
+    <version>1.0.0</version>
+    <authors>CKK.DB</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="CKK.Logic" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Dapper" version="2.1.35" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Configuration" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Configuration.ConfigurationManager" version="8.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SqlClient" version="4.8.6" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\4400117579\Source\Repos\StructProject\CKK.DB\bin\Release\net6.0\CKK.DB.dll" target="lib\net6.0\CKK.DB.dll" />
+  </files>
+</package>
