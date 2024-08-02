@@ -1,0 +1,12 @@
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\bin\Release\net6.0\CKK.Logic.deps.json
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\bin\Release\net6.0\CKK.Logic.dll
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\bin\Release\net6.0\CKK.Logic.pdb
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.csproj.AssemblyReference.cache
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.AssemblyInfoInputs.cache
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.AssemblyInfo.cs
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.csproj.CoreCompileInputs.cache
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.dll
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\refint\CKK.Logic.dll
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\CKK.Logic.pdb
+C:\Users\4400117579\Source\Repos\StructProject\CKK.Logic\obj\Release\net6.0\ref\CKK.Logic.dll

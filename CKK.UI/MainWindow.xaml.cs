@@ -49,7 +49,7 @@ namespace CKK.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             // Display the resulting data
@@ -61,13 +61,55 @@ namespace CKK.UI
             try
             {
                 Product newProd = new Product();
-                if (NewItemName.Text == "") // check for if the name was entered
+
+                string newName = NewItemName.Text;
+                decimal newPrice;
+                int newQuantity;
+
+                // validate price
+                try
+                {
+                    newPrice = decimal.Parse(NewItemPrice.Text);
+                }
+                catch
+                {
+                    throw new ArgumentException("Price is invalid");
+                }
+                if (newPrice >= 0)
+                {
+                    newProd.Price = newPrice;
+                }
+                else
+                {
+                    throw new ArgumentException("Price cannot be negative");
+                }
+
+                // validate quantity
+                try
+                {
+                    newQuantity = int.Parse(NewItemStock.Text);
+                }
+                catch
+                {
+                    throw new ArgumentException("Stock is invalid");
+                }
+                if (newQuantity >= 0)
+                {
+                    newProd.Quantity = newQuantity;
+                }
+                else
+                {
+                    throw new ArgumentException("Stock cannot be negative");
+                }
+
+                if (newName != "") // check for if the name was entered
+                {
+                    newProd.Name = newName;
+                }
+                else
                 {
                     throw new ArgumentException("Name was not entered");
                 }
-                newProd.Name = NewItemName.Text;
-                newProd.Price = decimal.Parse(NewItemPrice.Text);
-                newProd.Quantity = int.Parse(NewItemStock.Text);
 
                 // Add the product in the database
                 products.Add(newProd);
@@ -88,7 +130,7 @@ namespace CKK.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         // Event for when "Save Changes" button is clicked
@@ -97,7 +139,17 @@ namespace CKK.UI
 
             try
             {
-                int id = int.Parse(ID.Text);
+                int id;
+
+                try
+                {
+                    id = int.Parse(ID.Text);
+                }
+                catch
+                {
+                    throw new ArgumentException("Id is invalid");
+                }
+
                 Product product = products.GetById(id); // retrieve the product from the database
 
                 if (product == null) // checks if the product was found or not
@@ -105,7 +157,7 @@ namespace CKK.UI
                     throw new ProductDoesNotExistException("Product could not be found");
                 }
 
-                // Change the product accordingly
+                // Change the product accordingly (with validation)
                 if (AddAmount.Text != "")
                 {
                     try
@@ -142,22 +194,28 @@ namespace CKK.UI
                 }
                 if (NewPrice.Text != "")
                 {
+                    decimal newPrice;
                     try
                     {
-                        product.Price = decimal.Parse(NewPrice.Text);
+                        newPrice = decimal.Parse(NewPrice.Text);
                     }
                     catch
                     {
                         throw new ArgumentException("New price is invalid");
                     }
+
+                    if (newPrice >= 0)
+                    {
+                        product.Price = newPrice;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("New price cannot be negative");
+                    }
                 }
                 if (NewName.Text != "")
                 {
                     product.Name = NewName.Text;
-                }
-                else
-                {
-                    throw new ArgumentException("New name is invalid");
                 }
 
                 // Change the product in the database
@@ -181,7 +239,7 @@ namespace CKK.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         // Event for when the "Delete Item" button is clicked
@@ -189,7 +247,17 @@ namespace CKK.UI
         {
             try
             {
-                int id = int.Parse(ID.Text);
+                int id;
+
+                try
+                {
+                    id = int.Parse(ID.Text);
+                }
+                catch
+                {
+                    throw new ArgumentException("Id is invalid");
+                }
+
                 Product product = products.GetById(id);
 
                 if (product == null) //check if the product was found
@@ -214,7 +282,7 @@ namespace CKK.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         // events for when you click the column headers for the "All Items" list
@@ -245,28 +313,35 @@ namespace CKK.UI
         {
             try
             {
-                if (IDSearchInput.Text == "") // if id was not entered
+                try
                 {
-                    searchID = -1;
+                    if (IDSearchInput.Text == "") // if id was not entered
+                    {
+                        searchID = -1;
+                    }
+                    else
+                    {
+                        searchID = int.Parse(IDSearchInput.Text);
+                    }
                 }
-                else
+                catch
                 {
-                    searchID = int.Parse(IDSearchInput.Text);
+                    throw new ArgumentException("Id is invalid");
                 }
+
+                searchName = NameSearchInput.Text; // search name will not get searched if id was found so it is safe to set it by default
+
+                // Search the database and display the products accordingly
+                Search();
+
+                //reset textboxes (not sure if it is more intuitive to do this or not)
+                NameSearchInput.Text = "";
+                IDSearchInput.Text = "";
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Id");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            searchName = NameSearchInput.Text; // search name will not get searched if id was found so it is safe to set it by default
-
-            // Search the database and display the products accordingly
-            Search();
-
-            //reset textboxes (not sure if it is more intuitive to do this or not)
-            NameSearchInput.Text = "";
-            IDSearchInput.Text = "";
         }
 
         private void OnSelection_Changed(object sender, SelectionChangedEventArgs e)
